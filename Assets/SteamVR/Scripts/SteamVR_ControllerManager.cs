@@ -252,7 +252,8 @@ public class SteamVR_ControllerManager : MonoBehaviour
 			SetTrackedDeviceIndex(objectIndex++, (leftIndex < connected.Length && connected[leftIndex]) ? leftIndex : OpenVR.k_unTrackedDeviceIndexInvalid);
 
 			// Assign out any additional controllers only after both left and right have been assigned.
-			if (leftIndex != OpenVR.k_unTrackedDeviceIndexInvalid && rightIndex != OpenVR.k_unTrackedDeviceIndexInvalid)
+			// WCL Hack
+			//if (leftIndex != OpenVR.k_unTrackedDeviceIndexInvalid && rightIndex != OpenVR.k_unTrackedDeviceIndexInvalid)
 			{
 				for (uint deviceIndex = 0; deviceIndex < connected.Length; deviceIndex++)
 				{

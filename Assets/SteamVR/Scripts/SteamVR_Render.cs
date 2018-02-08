@@ -337,10 +337,11 @@ public class SteamVR_Render : MonoBehaviour
 #else
 	void OnCameraPreCull(Camera cam)
 	{
-#if !( UNITY_5_4 )
-		if (cam.cameraType != CameraType.VR)
-			return;
-#endif
+		//removed as per https://github.com/ValveSoftware/steamvr_unity_plugin/issues/49#issuecomment-361745356 to get controllers to work
+		//#if !( UNITY_5_4 )
+		//		if (cam.cameraType != CameraType.VR)
+		//			return;
+		//#endif
 		// Only update poses on the first camera per frame.
 		if (Time.frameCount != lastFrameCount)
 		{
