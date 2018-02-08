@@ -20,6 +20,12 @@ public class TransformRecorder : MonoBehaviour {
         _outStr =  new StringBuilder();
         
         _logDir = Path.Combine(Application.persistentDataPath, "Recordings");
+
+        if (!Directory.Exists(_logDir))
+        {
+            Directory.CreateDirectory(_logDir);
+        }
+
         _logFile = string.Format("log_{0}.csv", System.DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss"));
         _logFilePath = Path.Combine(_logDir, _logFile);
 
@@ -67,7 +73,7 @@ public class TransformRecorder : MonoBehaviour {
             UpdateOutStr();
             _logTime = System.DateTime.Now.Ticks;
 
-            if ((System.DateTime.Now.Ticks - _logChunkTime) / 50000000 >= 1) // every 5 seconds
+            if ((System.DateTime.Now.Ticks - _logChunkTime) / 10000000 >= 1) // every 5 seconds
             {
                 AppendOutStrToFile();
             }
